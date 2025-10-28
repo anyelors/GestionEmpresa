@@ -60,8 +60,8 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado[" +
-                "Id = " + idEmpleado +
+        return "Empleado [" +
+                "ID = " + idEmpleado +
                 ", Dni = " + dni +
                 ", Nombre = " + nombre +
                 ", Sueldo = " + sueldo +

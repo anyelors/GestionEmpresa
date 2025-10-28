@@ -78,12 +78,14 @@ public class App {
             departamentos.forEach(System.out::println);
 
             nomDepartamento = ConsoleHelper.pedirCadena("Nombre del Departamento:");
-            String finalNomDepartamento = nomDepartamento;
             departamento = departamentos.stream()
-                    .filter(c -> c.getNombre().equalsIgnoreCase(finalNomDepartamento))
+                    .filter(c -> c.getNombre().equalsIgnoreCase(nomDepartamento))
                     .findFirst()
                     .orElse(null);
-            if (departamento != null) System.out.println("Departamento ya existe.");
+            if (departamento != null) {
+                System.out.println("Departamento ya existe.");
+                return;
+            }
 
             servicio.altaDepartamento(new Departamento(nomDepartamento));
             System.out.println("Departamento dado de alta");

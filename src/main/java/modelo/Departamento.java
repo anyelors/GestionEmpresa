@@ -36,8 +36,8 @@ public class Departamento {
 
     @Override
     public String toString() {
-        return "Departamento[" +
-                "Id = " + idDepartamento +
+        return "Departamento [" +
+                "ID = " + idDepartamento +
                 ", Nombre = " + nombre +
                 ']';
     }
