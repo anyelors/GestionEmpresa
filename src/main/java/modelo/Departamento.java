@@ -1,5 +1,7 @@
 package modelo;
 
+import java.util.Objects;
+
 public class Departamento {
     private Long idDepartamento;
     private String nombre;
@@ -38,5 +40,16 @@ public class Departamento {
                 "Id = " + idDepartamento +
                 ", Nombre = " + nombre +
                 ']';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Departamento that)) return false;
+        return Objects.equals(nombre, that.nombre);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(nombre);
     }
 }

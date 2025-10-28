@@ -18,14 +18,6 @@ public class Empleado {
         this.departamento = departamento;
     }
 
-    public Empleado(Long idEmpleado, String dni, String nombre, Float sueldo, Departamento departamento) {
-        this.idEmpleado = idEmpleado;
-        this.dni = dni;
-        this.nombre = nombre;
-        this.sueldo = sueldo;
-        this.departamento = departamento;
-    }
-
     public Long getIdEmpleado() {
         return idEmpleado;
     }
@@ -69,11 +61,11 @@ public class Empleado {
     @Override
     public String toString() {
         return "Empleado[" +
-                " Id = " + idEmpleado +
+                "Id = " + idEmpleado +
                 ", Dni = " + dni +
                 ", Nombre = " + nombre +
                 ", Sueldo = " + sueldo +
-                ", Departamento=" + departamento.getNombre() +
+                ", Departamento = " + departamento.getNombre() +
                 ']';
     }
 }
