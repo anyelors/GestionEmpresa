@@ -69,6 +69,16 @@ public class App {
         return departamento;
     }
 
+    public static Empleado pedirEmpleado() throws SQLException {
+        Servicio servicio = new ServicioImpl();
+        Empleado empleado;
+        List<Empleado> empleados = servicio.listarEmpleados();
+        empleados.forEach(System.out::println);
+        long id = ConsoleHelper.pedirEntero("ID Empleado: ");
+        empleado = servicio.obtenerEmpleado(id);
+        return empleado;
+    }
+
     public static void altaDepartamento() {
         try {
             Servicio servicio = new ServicioImpl();
@@ -128,7 +138,7 @@ public class App {
             }
 
             empleados = empleados.stream()
-                    .filter(e-> e.getDepartamento().getIdDepartamento().equals(departamento.getIdDepartamento()))
+                    .filter(e -> e.getDepartamento().getIdDepartamento().equals(departamento.getIdDepartamento()))
                     .toList();
 
             if (!empleados.isEmpty())
@@ -145,11 +155,7 @@ public class App {
             Servicio servicio = new ServicioImpl();
             Empleado empleado;
             Departamento departamento;
-            List<Empleado> empleados = servicio.listarEmpleados();
-            empleados.forEach(System.out::println);
-
-            long id = ConsoleHelper.pedirEntero("ID Empleado: ");
-            empleado = servicio.obtenerEmpleado(id);
+            empleado = pedirEmpleado();
             if (empleado == null) {
                 System.out.println("Empleado no existe.");
                 return;
@@ -160,9 +166,8 @@ public class App {
                 System.out.println("Departamento no existe.");
                 return;
             }
-            if (empleado.getDepartamento().getIdDepartamento().equals(departamento.getIdDepartamento()))
-            {
-                System.out.println("No se cambio departamento de empleado");
+            if (empleado.getDepartamento().getIdDepartamento().equals(departamento.getIdDepartamento())) {
+                System.out.println("Selecciono el departamento que ya tenia asociado el empleado");
                 return;
             }
             empleado.setDepartamento(departamento);
@@ -178,10 +183,7 @@ public class App {
         try {
             Servicio servicio = new ServicioImpl();
             Empleado empleado;
-            List<Empleado> empleados = servicio.listarEmpleados();
-            empleados.forEach(System.out::println);
-            long id = ConsoleHelper.pedirEntero("ID Empleado: ");
-            empleado = servicio.obtenerEmpleado(id);
+            empleado = pedirEmpleado();
             if (empleado == null) {
                 System.out.println("Empleado no existe.");
                 return;
