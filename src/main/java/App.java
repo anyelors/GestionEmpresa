@@ -128,7 +128,7 @@ public class App {
             }
 
             empleados = empleados.stream()
-                    .filter(e-> e.getDepartamento().getNombre().equalsIgnoreCase(departamento.getNombre()))
+                    .filter(e-> e.getDepartamento().getIdDepartamento().equals(departamento.getIdDepartamento()))
                     .toList();
 
             if (!empleados.isEmpty())
