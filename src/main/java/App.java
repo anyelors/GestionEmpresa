@@ -15,10 +15,10 @@ public class App {
             System.out.println("\n=== GESTIÓN DE EMPLEADOS ===");
             System.out.println("1. Alta de Departamento");
             System.out.println("2. Alta de Empleado");
-            System.out.println("3. Listar Empleados de un departamento");
-            System.out.println("4. Transferencia de un empleando");
-            System.out.println("5. Baja de un empleado");
-            System.out.println("6. Listado de sueldos medios");
+            System.out.println("3. Listar Empleados por Departamento");
+            System.out.println("4. Transferencia de un Empleado");
+            System.out.println("5. Baja de un Empleado");
+            System.out.println("6. Listado de Sueldos Medios");
             System.out.println("0. Salir");
             int op = ConsoleHelper.pedirEntero("Selecciona opción: ", 0, 6);
             switch (op) {
@@ -148,12 +148,8 @@ public class App {
             List<Empleado> empleados = servicio.listarEmpleados();
             empleados.forEach(System.out::println);
 
-            String dni = ConsoleHelper.pedirCadena("DNI del Empleado:");
-            empleado = empleados.stream()
-                    .filter(c -> c.getDni().equals(dni))
-                    .findFirst()
-                    .orElse(null);
-
+            long id = ConsoleHelper.pedirEntero("ID Empleado: ");
+            empleado = servicio.obtenerEmpleado(id);
             if (empleado == null) {
                 System.out.println("Empleado no existe.");
                 return;
@@ -166,12 +162,12 @@ public class App {
             }
             if (empleado.getDepartamento().getIdDepartamento().equals(departamento.getIdDepartamento()))
             {
-                System.out.println("No se ha cambiado departamento de empleado");
+                System.out.println("No se cambio departamento de empleado");
                 return;
             }
             empleado.setDepartamento(departamento);
             servicio.actualizarEmpleado(empleado);
-            System.out.println("Empleado actualizado: ");
+            System.out.println("Departamento de Empleado Actualizado: ");
             System.out.println(empleado);
         } catch (SQLException e) {
             System.out.println("Error creando cuenta: " + e.getMessage());
